@@ -1,9 +1,21 @@
-import cv2 
-import pytesseract
+from PIL import Image
+from pytesseract import pytesseract
+import os
 
-img = cv2.imread('images\\fish-chips-1_en-US.PNG')
 
-# Adding custom options
-custom_config = r'--oem 3 --psm 6'
-txt = pytesseract.image_to_string(img, config=custom_config)
-print(f'out: {txt}')
+#Define path to images folder
+path_to_images = r'images/'
+
+
+
+#Get the file names in the directory
+for root, dirs, file_names in os.walk(path_to_images):
+    #Iterate over each file name in the folder
+    for file_name in file_names:
+        #Open image with PIL
+        img = Image.open(path_to_images + file_name)
+
+        #Extract text from image
+        text = pytesseract.image_to_string(img)
+
+        print(text)
