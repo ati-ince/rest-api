@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__) # application starting point
@@ -6,7 +6,7 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
-    return 'Welcome to the index !!!'
+    return 'HELLLOOO !!!!'
 
 
 # run the applicatuin
